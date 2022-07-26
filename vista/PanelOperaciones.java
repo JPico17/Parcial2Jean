@@ -15,7 +15,6 @@ public class PanelOperaciones extends JPanel
         //---------------
     // Atributos
     // --------------
-    public JButton btJugador;
     public JButton btMosDatos;
     public JButton btSalir;
 
@@ -36,12 +35,6 @@ public class PanelOperaciones extends JPanel
         this.add(btMosDatos);
         btMosDatos.setActionCommand("M. Datos");
 
-        //crear y agregar boton hallar
-        btJugador = new JButton("Jugador");
-        btJugador.setFont(new Font("Arial", BOLD, 12));
-        btJugador.setBounds(300,40,215,60);
-        this.add(btJugador);
-        btJugador.setActionCommand("Jugador");
 
         // crear y agregar boton salir
         btSalir = new JButton("Salir");
@@ -57,7 +50,6 @@ public class PanelOperaciones extends JPanel
     
     public void activarBotones()
     {
-        btJugador.setEnabled(true);
         btMosDatos.setEnabled(true);
         btSalir.setEnabled(true);
     }
@@ -65,7 +57,6 @@ public class PanelOperaciones extends JPanel
     public void agregarOyentesBotones(ActionListener pAL)
     {
         btMosDatos.addActionListener(pAL);
-        btJugador.addActionListener(pAL);
         btSalir.addActionListener(pAL);
     }
 

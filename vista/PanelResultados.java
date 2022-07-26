@@ -39,7 +39,7 @@ public class PanelResultados extends JPanel
 
     }
     // metodo de acceso a la informacion
-    public void mostrarResultado(String msg)
+    public void toString(String msg)
     {
         taResultado.append(msg + "\n");
     }

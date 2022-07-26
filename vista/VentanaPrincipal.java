@@ -7,7 +7,6 @@ public class VentanaPrincipal   extends JFrame
     //----------
     // Atributos
     //----------
-    public DialogoJugador miDialogoJugador;
     public PanelEntradaDatos miPanelEntradaDatos;
     public PanelOperaciones miPanelOperaciones;
     public PanelResultados miPanelResultados;
@@ -40,16 +39,12 @@ public class VentanaPrincipal   extends JFrame
         
 
         // Caracteristicas de la ventana
-        this.setTitle("APP Qatar 2022");
+        this.setTitle("APP Volumen Figuras");
         this.setSize(800,800);
         //this.setLocation(100,100);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-    }
-    public void crearDialogoJugador()
-    {
-        miDialogoJugador = new DialogoJugador();
     }
 }

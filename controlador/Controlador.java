@@ -4,8 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import vista.VentanaPrincipal;
-import modelo.Jugador;
-import modelo.Equipo;
+import modelo.Cilindro;
+import modelo.Cubo;
+import modelo.Cono;
+import modelo.Esfera;
+import modelo.FiguraGeometrica;
+import vista.PanelEntradaDatos;
 
 public class Controlador implements ActionListener
 {
@@ -15,19 +19,26 @@ public class Controlador implements ActionListener
         //------------
     
         private VentanaPrincipal vista;
-        private Equipo modelo;
-        private Jugador modelo2;
+        private FiguraGeometrica modelo;
+        private Cilindro modelo2;
+        private Cono modelo3;
+        private Cubo modelo4;
+        private Esfera modelo5;
+        
     
         //------------
         // Metodos
         //------------
     
         //metodo constructor
-        public Controlador(VentanaPrincipal pVista, Equipo pModelo, Jugador pModelo2)
+        public Controlador(VentanaPrincipal pVista, FiguraGeometrica pModelo, Cilindro pModelo2, Cono pModelo3, Cubo pModelo4, Esfera pModelo5)
         {
             this.vista = pVista;
             this.modelo= pModelo;
             this.modelo2= pModelo2;
+            this.modelo3= pModelo3;
+            this.modelo4= pModelo4;
+            this.modelo5= pModelo5;
             this.vista.miPanelOperaciones.agregarOyentesBotones(this);      
         }
         
@@ -41,24 +52,15 @@ public class Controlador implements ActionListener
             //Validar datos entrada
             try
             {
-                String pais = vista.miPanelEntradaDatos.getPais();
-                String continente = vista.miPanelEntradaDatos.getContinente();
-                String nombreDirector = vista.miPanelEntradaDatos.getnombreDirector();
-                int copasGana = Integer.parseInt(vista.miPanelEntradaDatos.getCopasGana());
-                String equipoPertenece = vista.miPanelEntradaDatos.getEquipoPertenece();
-                int numEqiposDirigidos = Integer.parseInt(vista.miPanelEntradaDatos.getNumEquiposDirigidos());
-                //String jugadorTitular = vista.miPanelEntradaDatos.getJugadorTitular();
-                //String jugadorTitular = vista.miPanelEntradaDatos.getJugadorTitular();
+                
+                String nombre = vista.miPanelEntradaDatos.getNombre();
+                //Double area = vista.miPanelEntradaDatos.getArea();
                 
             
                 //Creación del objeto tipo Carro
-                modelo = new Equipo(pais, continente, nombreDirector, copasGana, equipoPertenece, numEqiposDirigidos, equipoPertenece, equipoPertenece);
+                modelo = new Cubo(6);
                 
-                vista.miPanelResultados.mostrarResultado("\nSe ha creado un nuevo equipo : " + 
-                "\nEl equipo es : " + modelo.getPais()+"\nSu continente es : " + modelo.getContinente() + 
-                "\nSu director es : " + modelo.getnombreDirector() + "\nCopas ganadas : " + modelo.getCopasGana()+ 
-                "\nEl equipo al que pertenece es : " + modelo.getPais() +
-                "\nEl numero de equipos dirigidos es : " + modelo.getNumEqiposDirigidos());
+                vista.miPanelResultados.toString();
                 
                 //Activar botones
                 vista.miPanelOperaciones.activarBotones();
@@ -69,29 +71,6 @@ public class Controlador implements ActionListener
             }   
         }
         
-        if(comando.equals("Jugador"))
-        {   
-            vista.crearDialogoJugador();
-            this.vista.miDialogoJugador.agregarOyentesBotones(this);  
-        }
-        
-        if(comando.equals("aceptar"))
-        {
-            String nombre = vista.miDialogoJugador.getNombre();
-            String apellido = vista.miDialogoJugador.getApellido();
-            int edad = Integer.parseInt(vista.miDialogoJugador.getEdad());
-            int numgoles = Integer.parseInt(vista.miDialogoJugador.getNumgoles());
-            String posicion = vista.miDialogoJugador.getPosicion();
-            String marcarTiSu = vista.miDialogoJugador.getMarcarTiSu();
-            //String jugadorTitular = modelo.miDialogoJugador.consultaDatEst;
-            modelo2 = new Jugador(nombre,apellido,edad,numgoles,posicion,marcarTiSu);
-            vista.miPanelResultados.mostrarResultado("\nDatos Jugador: " + "\nNombre : " + modelo2.getNombre() + 
-            "\nApellido : " + modelo2.getApellido() + "\nEdad : " + modelo2.getEdad() +
-            "\nNumero de goles marcados : " + modelo2.getNumgoles()+
-            "\nSu posicion es : " + modelo2.getPosicion()+
-            "\nEs jugador : " + modelo2.getMarcarTiSu());
-            vista.miDialogoJugador.cerrarDialogo();
-        }
         if(comando.equals("Salir"))
             {
                 System.exit(0);
